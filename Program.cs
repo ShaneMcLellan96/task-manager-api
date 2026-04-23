@@ -14,7 +14,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowTaskManagerUi", policy =>
     {
         policy
-            .WithOrigins("http://localhost:3000")
+            .WithOrigins(
+                "http://localhost:3000",
+                "https://task-manager-ui-amber.vercel.app"
+            )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
