@@ -10,19 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup .NET 8
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: "8.0.x"
 
-      - name: Restore packages
-        run: dotnet restore
+      - name: Restore
+        run: dotnet restore TaskManager.csproj
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build TaskManager.csproj --no-restore
 
       - name: Test
-        run: dotnet test --no-build --configuration Release --verbosity normal
+        run: dotnet test TaskManager.csproj --no-build
